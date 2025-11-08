@@ -98,18 +98,14 @@
                     </div>
                 </div>
 
-                <!-- Dropdown Options (Sekarang 4 Langkah) -->
                 <div class="border-t border-blue-700 pt-6">
-                    <!-- JUDUL DIPERBARUI -->
                     <h3 class="text-lg font-semibold text-gray-100 text-center mb-4">✨ Sesuaikan Gaya Tulisan dalam 4 Langkah Mudah ✨</h3>
-                    <!-- GRID DIPERBARUI -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label for="purpose" class="flex items-center space-x-2 text-sm font-medium text-gray-300 mb-1">
                                 <span class="bg-cyan-200 text-cyan-900 text-xs font-semibold px-2.5 py-0.5 rounded-full">1</span>
                                 <span>Peruntukan</span>
                             </label>
-                            <!-- Opsi akan di-load oleh JS -->
                             <select id="purpose" class="w-full p-3 bg-[#0f1d42] border border-blue-700 rounded-lg appearance-none select focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition shadow-sm text-gray-100"></select>
                         </div>
                         <div>
@@ -117,7 +113,6 @@
                                 <span class="bg-cyan-200 text-cyan-900 text-xs font-semibold px-2.5 py-0.5 rounded-full">2</span>
                                 <span>Formula Copywriting</span>
                             </label>
-                            <!-- Opsi akan di-load oleh JS -->
                             <select id="formula" class="w-full p-3 bg-[#0f1d42] border border-blue-700 rounded-lg appearance-none select focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition shadow-sm text-gray-100"></select>
                         </div>
                         <div>
@@ -125,10 +120,8 @@
                                 <span class="bg-cyan-200 text-cyan-900 text-xs font-semibold px-2.5 py-0.5 rounded-full">3</span>
                                 <span>Hook</span>
                             </label>
-                            <!-- Opsi akan di-load oleh JS -->
                             <select id="hook" class="w-full p-3 bg-[#0f1d42] border border-blue-700 rounded-lg appearance-none select focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition shadow-sm text-gray-100"></select>
                         </div>
-                        <!-- FITUR BAHASA DITAMBAHKAN KEMBALI -->
                         <div>
                             <label for="bahasa" class="flex items-center space-x-2 text-sm font-medium text-gray-300 mb-1">
                                 <span class="bg-cyan-200 text-cyan-900 text-xs font-semibold px-2.5 py-0.5 rounded-full">4</span>
@@ -137,7 +130,6 @@
                             <select id="bahasa" class="w-full p-3 bg-[#0f1d42] border border-blue-700 rounded-lg appearance-none select focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition shadow-sm text-gray-100"></select>
                         </div>
                     </div>
-                    <!-- INPUT BAHASA KUSTOM DITAMBAHKAN KEMBALI -->
                     <div id="custom-bahasa-container" class="hidden mt-6">
                         <label for="bahasa-kustom" class="block text-sm font-medium text-gray-300 mb-1">Tulis Bahasa Lainnya:</label>
                         <input type="text" id="bahasa-kustom" class="w-full bg-[#0f1d42] border border-blue-700 rounded-lg p-2.5 text-gray-100 placeholder-gray-400 focus:ring-cyan-500 focus:border-cyan-500 shadow-sm" placeholder="Contoh: Bahasa Inggris"/>
@@ -196,18 +188,20 @@
         const resultHeader = document.getElementById('result-header');
         const resultText = document.getElementById('result-text');
         const copyBtn = document.getElementById('copy-btn');
-
-        // ELEMEN BARU DITAMBAHKAN
         const bahasaSelect = document.getElementById('bahasa');
         const customBahasaContainer = document.getElementById('custom-bahasa-container');
         const customBahasaInput = document.getElementById('bahasa-kustom');
-
         const modal = document.getElementById('modal');
         const modalTitle = document.getElementById('modal-title');
         const modalMessage = document.getElementById('modal-message');
         const modalCloseButton = document.getElementById('modal-close-button');
 
-        // FUNGSI BARU DITAMBAHKAN
+        const purposeOptions = ["Video Reels/Tiktok", "Video Youtube", "Script Teks", "Status Facebook", "Status Threads/X", "Carousel Instagram", "Feed Single Post", "Caption", "Chat WA"];
+        const formulaOptions = ["AIDA (Attention, Interest, Desire, Action)", "PAS (Problem, Agitate, Solve)", "FAB (Features, Advantages, Benefits)", "PPPP (Picture, Promise, Prove, Push)", "BAB (Before, After, Bridge)", "The Star-Story-Solution Formula", "ACCA (Awareness, Comprehension, Conviction, Action)", "4C (Clear, Concise, Compelling, Credible)", "GRAB (Gain attention, Relate, Agitate, Bridge)", "PASTOR (Person, Aspiration, Story, Testimony, Offer, Request)", "QUEST (Qualify, Understand, Educate, Stimulate, Transition)", "SLAP (Stop, Look, Act, Purchase)", "AICPBSAWN (Attention, Interest, Credibility, Proof, Benefit, Scarcity, Action, Warn, Now)"];
+        const hookOptions = ["Negatif, Positif", "Problem, Solution", "Before, After", "Manfaat Langsung (Direct Benefit)", "Angka atau Daftar (Numbered List)", "Pertanyaan (Question)", "Perintah (Command)", "Rasa Penasaran & Kejutan (Curiosity & Intrigue)", "Berita atau Pengumuman (News/Announcement)", "Bukti Sosial & Testimonial (Social Proof)", "Urgensi & Kelangkaan (Urgency & Scarcity)", "Dulu.., Sekarang..."];
+        const languageOptions = ["Bahasa Gen-Z", "Bahasa Indonesia", "Bahasa Jawa (ragam Ngoko)", "Bahasa Jawa (ragam Krama)", "Bahasa Sunda (ragam Loma)", "Bahasa Sunda (ragam Lemes)", "Bahasa Banjar (ragam Kuala)", "Bahasa Banjar (ragam Hulu)", "Bahasa Bali", "Bahasa Batak", "Bahasa Minangkabau", "Bahasa Makassar", "Bahasa Bugis", "Bahasa Aceh", "Bahasa Madura", "Bahasa Melayu", "Bahasa Papua", "Lainnya"];
+        const hookDropdownOptions = ["Random", ...hookOptions];
+
         function populateSelect(selectEl, options) {
             options.forEach(optionText => {
                 const option = document.createElement('option');
@@ -217,18 +211,11 @@
             });
         }
 
-        // KONSTANTA BARU DITAMBAHKAN
-        const purposeOptions = ["Video Reels/Tiktok", "Video Youtube", "Script Teks", "Status Facebook", "Status Threads/X", "Carousel Instagram", "Feed Single Post", "Caption", "Chat WA"];
-        const formulaOptions = ["AIDA (Attention, Interest, Desire, Action)", "PAS (Problem, Agitate, Solve)", "FAB (Features, Advantages, Benefits)", "PPPP (Picture, Promise, Prove, Push)", "BAB (Before, After, Bridge)", "The Star-Story-Solution Formula", "ACCA (Awareness, Comprehension, Conviction, Action)", "4C (Clear, Concise, Compelling, Credible)", "GRAB (Gain attention, Relate, Agitate, Bridge)", "PASTOR (Person, Aspiration, Story, Testimony, Offer, Request)", "QUEST (Qualify, Understand, Educate, Stimulate, Transition)", "SLAP (Stop, Look, Act, Purchase)", "AICPBSAWN (Attention, Interest, Credibility, Proof, Benefit, Scarcity, Action, Warn, Now)"];
-        const hookOptions = ["Negatif, Positif", "Problem, Solution", "Before, After", "Manfaat Langsung (Direct Benefit)", "Angka atau Daftar (Numbered List)", "Pertanyaan (Question)", "Perintah (Command)", "Rasa Penasaran & Kejutan (Curiosity & Intrigue)", "Berita atau Pengumuman (News/Announcement)", "Bukti Sosial & Testimonial (Social Proof)", "Urgensi & Kelangkaan (Urgency & Scarcity)", "Dulu.., Sekarang..."];
-        const languageOptions = ["Bahasa Gen-Z", "Bahasa Indonesia", "Bahasa Jawa (ragam Ngoko)", "Bahasa Jawa (ragam Krama)", "Bahasa Sunda (ragam Loma)", "Bahasa Sunda (ragam Lemes)", "Bahasa Banjar (ragam Kuala)", "Bahasa Banjar (ragam Hulu)", "Bahasa Bali", "Bahasa Batak", "Bahasa Minangkabau", "Bahasa Makassar", "Bahasa Bugis", "Bahasa Aceh", "Bahasa Madura", "Bahasa Melayu", "Bahasa Papua", "Lainnya"];
-
-        // FUNGSI POPULATE DIPANGGIL
         populateSelect(purposeSelect, purposeOptions);
         populateSelect(formulaSelect, formulaOptions);
-        populateSelect(hookSelect, hookOptions); // Menggunakan hookOptions
+        populateSelect(hookSelect, hookDropdownOptions);
         populateSelect(bahasaSelect, languageOptions);
-        bahasaSelect.value = "Bahasa Indonesia"; // Set default
+        bahasaSelect.value = "Bahasa Indonesia";
 
         function showModal(title, message) {
             modalTitle.textContent = title;
@@ -241,6 +228,7 @@
         modalCloseButton.addEventListener('click', hideModal);
 
         const callGenerateApi = async (prompt, retries = 3, delay = 1000) => {
+            // URL Backend dari file "asal" Anda
             const backendUrl = '/api/generate'; 
 
             for (let i = 0; i < retries; i++) {
@@ -270,7 +258,6 @@
             }
         };
         
-        // EVENT LISTENER BARU DITAMBAHKAN
         bahasaSelect.addEventListener('change', () => {
             if (bahasaSelect.value === 'Lainnya') {
                 customBahasaContainer.classList.remove('hidden');
@@ -293,7 +280,6 @@
             const formula = formulaSelect.value;
             const hook = hookSelect.value;
             
-            // LOGIKA BARU DITAMBAHKAN
             const bahasa = bahasaSelect.value;
             const bahasaKustom = customBahasaInput.value;
             let selectedBahasa = bahasa;
@@ -311,9 +297,11 @@
             generateBtn.classList.add('disabled:opacity-50', 'disabled:cursor-not-allowed'); 
             generateBtn.querySelector('span').textContent = "Sedang Membuat..."; 
 
-            const systemPrompt = `Anda adalah seorang ahli copywriting profesional berbahasa Indonesia. Tugas Anda adalah membuat salinan (copy) yang sangat menarik berdasarkan detail yang diberikan. Pastikan gaya bahasa dan formatnya sesuai dengan platform yang dituju. Hasilkan HANYA teks copywritingnya saja, tanpa penjelasan atau judul tambahan.`;
+            // INI ADALAH PROMPT YANG DIPERBARUI
+            const systemPrompt = `Anda adalah seorang ahli copywriting profesional berbahasa Indonesia. Tugas Anda adalah membuat salinan (copy) yang sangat menarik berdasarkan detail yang diberikan.
+            PENTING: Hasilkan HANYA teks copywritingnya saja.
+            LARANGAN: JANGAN gunakan format markdown (seperti \`**\` atau \`*\`). JANGAN sertakan label formula (seperti 'AIDA:' atau 'Hook:'). Langsung tulis konten copywriting yang sudah jadi dan bersih.`;
             
-            // USER PROMPT DIPERBARUI
             const userPrompt = `
                   Deskripsi Produk/Topik: "${description}"
                   Target Penonton/Audiens: "${audience}"
