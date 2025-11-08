@@ -3,276 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Copywriting Satset</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>AI Generator Copywriting</title>
+    <script src="https://cdn-tailwindcss.vercel.app/"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            background-color: #050a30; 
+            color: #e5e7eb; 
         }
-        .loader {
-            border: 4px solid #e5e7eb; /* a lighter gray */
-            border-top: 4px solid #4f46e5; /* indigo-600 */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .custom-select {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-            background-position: right 0.7rem center;
-            background-repeat: no-repeat;
-            background-size: 1.2em 1.2em;
-            padding-right: 2.5rem;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-        }
-        .gradient-text {
-            background-image: linear-gradient(to right, #4f46e5, #14b8a6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0f2fd8; }
+        ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+        input::placeholder, textarea::placeholder { color: #9ca3af; opacity: 1; }
+        select { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e"); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; -webkit-appearance: none; -moz-appearance: none; appearance: none; padding-right: 2.5rem; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-indigo-50 via-white to-cyan-50 min-h-screen flex items-center justify-center p-4">
+<body class="text-gray-200">
 
-    <div class="w-full max-w-4xl bg-white/70 backdrop-blur-xl rounded-2xl shadow-lg p-6 md:p-10 space-y-8 border border-gray-200">
-        <!-- Header -->
-        <div class="text-center">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800">AI Copywriting <span class="gradient-text">Satset</span></h1>
-            <p class="text-gray-500 mt-2">Bikin copywriting menarik dalam hitungan detik ⚡ by @handialbanjary</p>
-        </div>
-
-        <!-- Form Input -->
-        <div class="space-y-6">
-            <div>
-                <label for="product-description" class="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                    <span>Deskripsikan produk, layanan, atau topik Anda:</span>
-                </label>
-                <textarea id="product-description" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-sm" placeholder="Contoh: Kopi bubuk Robusta premium dari lereng gunung..."></textarea>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 <div>
-                    <label for="target-audience" class="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        <span>Target Penonton/Audiens:</span>
-                    </label>
-                    <textarea id="target-audience" rows="2" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-sm" placeholder="Contoh: Mahasiswa, pekerja kantoran..."></textarea>
-                </div>
-                 <div>
-                    <label for="cta-goals" class="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-                        <span>CTA (Call to Action) / Goals:</span>
-                    </label>
-                    <textarea id="cta-goals" rows="2" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-sm" placeholder="Contoh: Ajak untuk membeli, klik link..."></textarea>
-                </div>
-            </div>
-
-            <!-- Dropdown Options -->
-            <div class="border-t border-gray-200 pt-6">
-                <h3 class="text-lg font-semibold text-gray-800 text-center mb-4">✨ Sesuaikan Gaya Tulisan dalam 3 Langkah Mudah ✨</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div>
-                        <label for="purpose" class="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
-                            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">1</span>
-                            <span>Peruntukan</span>
-                        </label>
-                        <select id="purpose" class="w-full p-3 border border-gray-300 rounded-lg appearance-none custom-select focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-sm">
-                            <option>Video Reels/Tiktok</option>
-                            <option>Video Youtube</option>
-                            <option>Script Teks</option>
-                            <option>Status Facebook</option>
-                            <option>Status Threads/X</option>
-                            <option>Carousel Instagram</option>
-                            <option>Feed Single Post</option>
-                            <option>Caption</option>
-                            <option>Chat WA</option>
-                        </select>
+    <div class="min-h-screen p-4 md:p-8">
+        <div class="max-w-7xl mx-auto">
+            
+            <header class="text-center mb-10">
+                <div class="flex justify-center items-center gap-4 mb-4">
+                    <div class="flex-shrink-0 bg-[#0f2fd8] p-3 rounded-2xl shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1080 1080" class="w-16 h-16">
+                            <g><path style="opacity:1" fill="#f7fa1a" d="M 530.5,241.5 C 553.637,238.99 571.47,247.324 584,266.5C 597.929,295.935 612.096,325.268 626.5,354.5C 570.609,414.554 514.942,474.721 459.5,535C 459.905,535.945 460.572,536.612 461.5,537C 480.547,541.512 499.547,546.178 518.5,551C 520.286,551.196 521.619,552.029 522.5,553.5C 489.667,613.476 455.833,672.81 421,731.5C 425.794,711.089 430.628,690.589 435.5,670C 433.919,652.824 425.585,640.157 410.5,632C 364.86,610.513 319.527,588.513 274.5,566C 259.169,551.669 253.669,534.169 258,513.5C 261.449,501.439 268.616,492.273 279.5,486C 322.136,465.349 364.802,444.683 407.5,424C 417.623,417.544 426.123,409.377 433,399.5C 454.744,354.346 476.744,309.346 499,264.5C 506.987,253.269 517.487,245.603 530.5,241.5 Z"/></g>
+                            <g><path style="opacity:1" fill="#f7fa19" d="M 612.5,517.5 C 610.485,516.076 608.152,515.41 605.5,515.5C 591.538,513.176 577.871,509.843 564.5,505.5C 596.611,445.948 629.778,386.948 664,328.5C 659.517,347.961 655.017,367.461 650.5,387C 651.774,403.551 659.441,416.218 673.5,425C 718.566,446.202 763.233,467.868 807.5,490C 827.579,509.406 831.079,531.573 818,556.5C 814.167,561.667 809.667,566.167 804.5,570C 763.073,590.713 721.74,611.38 680.5,632C 668.086,639.746 657.586,649.579 649,661.5C 626.054,709.06 602.387,756.06 578,802.5C 556.829,822.487 533.996,824.654 509.5,809C 505.631,805.466 502.131,801.633 499,797.5C 484.124,768.246 469.624,738.746 455.5,709C 512.602,646.061 570.269,583.561 628.5,521.5C 623.188,520.038 617.855,518.705 612.5,517.5 Z"/></g>
+                            <g><path style="opacity:1" fill="#9f9881" d="M 605.5,515.5 C 608.152,515.41 610.485,516.076 612.5,517.5C 609.848,517.59 607.515,516.924 605.5,515.5 Z"/></g>
+                        </svg>
                     </div>
-                    <div>
-                        <label for="formula" class="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
-                            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">2</span>
-                            <span>Formula Copywriting</span>
-                        </label>
-                        <select id="formula" class="w-full p-3 border border-gray-300 rounded-lg appearance-none custom-select focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-sm">
-                            <option>AIDA (Attention, Interest, Desire, Action)</option>
-                            <option>PAS (Problem, Agitate, Solve)</option>
-                            <option>FAB (Features, Advantages, Benefits)</option>
-                            <option>PPPP (Picture, Promise, Prove, Push)</option>
-                            <option>BAB (Before, After, Bridge)</option>
-                            <option>The Star-Story-Solution Formula</option>
-                            <option>ACCA (Awareness, Comprehension, Conviction, Action)</option>
-                            <option>4C (Clear, Concise, Compelling, Credible)</option>
-                            <option>GRAB (Gain attention, Relate, Agitate, Bridge)</option>
-                            <option>PASTOR (Person, Aspiration, Story, Testimony, Offer, Request)</option>
-                            <option>QUEST (Qualify, Understand, Educate, Stimulate, Transition)</option>
-                            <option>SLAP (Stop, Look, Act, Purchase)</option>
-                            <option>AICPBSAWN (Attention, Interest, Credibility, Proof, Benefit, Scarcity, Action, Warn, Now)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="hook" class="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
-                             <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">3</span>
-                            <span>Hook</span>
-                        </label>
-                        <select id="hook" class="w-full p-3 border border-gray-300 rounded-lg appearance-none custom-select focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-sm">
-                            <option>Negatif, Positif</option>
-                            <option>Problem, Solution</option>
-                            <option>Before, After</option>
-                            <option>Manfaat Langsung (Direct Benefit)</option>
-                            <option>Angka atau Daftar (Numbered List)</option>
-                            <option>Pertanyaan (Question)</option>
-                            <option>Perintah (Command)</option>
-                            <option>Rasa Penasaran & Kejutan (Curiosity & Intrigue)</option>
-                            <option>Berita atau Pengumuman (News/Announcement)</option>
-                            <option>Bukti Sosial & Testimonial (Social Proof)</option>
-                            <option>Urgensi & Kelangkaan (Urgency & Scarcity)</option>
-                            <option>Dulu.., Sekarang...</option>
-                        </select>
+                    <div class="text-left">
+                        <h2 class="text-3xl font-bold text-gray-100">AI Satset</h2>
+                        <p class="text-base text-gray-400">Divisi Strategi Komunikasi v 1.0</p>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Generate Button -->
-        <div>
-            <button id="generate-btn" class="w-full bg-gradient-to-r from-indigo-600 to-teal-500 text-white font-bold py-3 px-4 rounded-lg hover:shadow-xl hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-300 ease-in-out flex items-center justify-center space-x-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m10 14 2 2 4-4"></path></svg>
-                <span>Buat Copywriting Sekarang</span>
-            </button>
-        </div>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-200">
+                    Generator Copywriting AI ✍️
+                </h1>
+                <p class="text-base md:text-lg text-gray-300 mt-3 max-w-3xl mx-auto">
+                    Buat naskah iklan, caption media sosial, atau skrip video yang menjual hanya dalam hitungan detik.
+                </p>
+            </header>
 
-        <!-- Output Section -->
-        <div id="output-container" class="bg-white p-6 rounded-lg border border-gray-200 min-h-[200px] relative shadow-inner hidden">
-             <div id="loader" class="absolute inset-0 flex items-center justify-center bg-white/70 rounded-lg">
-                <div class="loader"></div>
+            <main class="grid md:grid-cols-2 gap-6 md:gap-8">
+
+                <div class="bg-[#0f2fd8] p-6 rounded-2xl shadow-2xl border border-blue-800 space-y-5">
+                    
+                    <div>
+                        <label for="form-deskripsi" class="block text-sm font-medium text-gray-300 mb-1">Deskripsikan produk/topik Anda:</label>
+                        <textarea id="form-deskripsi" rows="4" class="w-full bg-[#0f1d42] border border-blue-700 rounded-lg p-2.5 text-gray-100 placeholder-gray-400 focus:ring-cyan-500 focus:border-cyan-500 shadow-sm" placeholder="Contoh: Kopi bubuk Robusta premium..."></textarea>
+                    </div>
+                    <div>
+                        <label for="form-target" class="block text-sm font-medium text-gray-300 mb-1">Target Penonton/Audiens:</label>
+                        <textarea id="form-target" rows="2" class="w-full bg-[#0f1d42] border border-blue-700 rounded-lg p-2.5 text-gray-100 placeholder-gray-400 focus:ring-cyan-500 focus:border-cyan-500 shadow-sm" placeholder="Contoh: Mahasiswa, pekerja kantoran..."></textarea>
+                    </div>
+                    <div>
+                        <label for="form-cta" class="block text-sm font-medium text-gray-300 mb-1">CTA (Call to Action) / Goals:</label>
+                        <textarea id="form-cta" rows="2" class="w-full bg-[#0f1d42] border border-blue-700 rounded-lg p-2.5 text-gray-100 placeholder-gray-400 focus:ring-cyan-500 focus:border-cyan-500 shadow-sm" placeholder="Contoh: Ajak untuk membeli..."></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label for="form-peruntukan" class="block text-sm font-medium text-gray-300 mb-1">Peruntukan</label>
+                            <select id="form-peruntukan" class="w-full bg-[#0f1d42] border border-blue-700 rounded-lg p-2.5 text-gray-100 focus:ring-cyan-500 focus:border-cyan-500 shadow-sm"></select>
+                        </div>
+                        <div>
+                            <label for="form-formula" class="block text-sm font-medium text-gray-300 mb-1">Formula</label>
+                            <select id="form-formula" class="w-full bg-[#0f1d42] border border-blue-700 rounded-lg p-2.5 text-gray-100 focus:ring-cyan-500 focus:border-cyan-500 shadow-sm"></select>
+                        </div>
+                        <div>
+                            <label for="form-hook" class="block text-sm font-medium text-gray-300 mb-1">Hook</label>
+                            <select id="form-hook" class="w-full bg-[#0f1d42] border border-blue-700 rounded-lg p-2.5 text-gray-100 focus:ring-cyan-500 focus:border-cyan-500 shadow-sm"></select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="form-bahasa" class="block text-sm font-medium text-gray-300 mb-1">Bahasa</label>
+                            <select id="form-bahasa" class="w-full bg-[#0f1d42] border border-blue-700 rounded-lg p-2.5 text-gray-100 focus:ring-cyan-500 focus:border-cyan-500 shadow-sm"></select>
+                        </div>
+                        <div id="custom-bahasa-container" class="hidden">
+                            <label for="form-bahasa-kustom" class="block text-sm font-medium text-gray-300 mb-1">Tulis Bahasa Lainnya:</label>
+                            <input type="text" id="form-bahasa-kustom" class="w-full bg-[#0f1d42] border border-blue-700 rounded-lg p-2.5 text-gray-100 placeholder-gray-400 focus:ring-cyan-500 focus:border-cyan-500 shadow-sm" placeholder="Contoh: Bahasa Inggris"/>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-2">
+                        <button id="generate-button" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-[#0f2fd8] disabled:opacity-75 disabled:cursor-not-allowed flex items-center justify-center space-x-2">
+                            <span>Buat Copywriting</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-[#0f2fd8] p-6 rounded-2xl shadow-2xl border border-blue-800 lg:flex lg:flex-col lg:h-full relative">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-4 sm:gap-2">
+                        <h2 class="text-xl lg:text-2xl font-bold text-white">Hasil Copywriting:</h2>
+                        <button id="copy-button" class="w-full sm:w-auto px-6 py-2 bg-[#0f1d42] hover:bg-opacity-75 text-gray-200 font-bold rounded-lg shadow-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 focus:ring-offset-[#0f2fd8] border border-blue-700 text-sm">
+                            Salin
+                        </button>
+                    </div>
+
+                    <div id="output-container" class="flex-1 rounded-lg p-4 custom-scrollbar min-h-[300px] lg:min-h-0 lg:flex-1 lg:overflow-y-auto border border-blue-700 bg-[#0f1d42]">
+                        
+                        <div id="loading-spinner" class="flex items-center justify-center h-full hidden">
+                            <div class="flex flex-col items-center">
+                                <div class="w-12 h-12 border-4 border-cyan-400 border-t-transparent border-solid rounded-full animate-spin"></div>
+                                <p class="text-gray-400 mt-4 text-center">AI sedang menulis... Ini mungkin perlu waktu.</p>
+                            </div>
+                        </div>
+
+                        <div id="output-content" class="text-gray-300" style="white-space: pre-wrap;">
+                            <p class="text-gray-500">Hasil copywriting Anda akan muncul di sini...</p>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+            
+            <div id="modal" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 hidden">
+                <div class="bg-[#0f1d42] p-6 rounded-2xl shadow-2xl border border-blue-700 max-w-sm w-full mx-4">
+                    <h3 id="modal-title" class="text-lg font-bold text-white mb-2"></h3>
+                    <p id="modal-message" class="text-sm text-gray-300 mb-4"></p>
+                    <button id="modal-close-button" class="w-full bg-cyan-600 text-white py-2 px-4 rounded-lg hover:bg-cyan-700 transition-colors">
+                        Tutup
+                    </button>
+                </div>
             </div>
-            <div id="result-header" class="flex justify-between items-center mb-4 hidden">
-                <h3 class="text-lg font-semibold text-gray-800">✨ Ini Hasilnya!</h3>
-                <button id="copy-btn" class="bg-gray-100 text-gray-700 text-sm font-medium py-1.5 px-3 rounded-md hover:bg-gray-200 transition-all active:scale-95 flex items-center space-x-1.5 border border-gray-200">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                     <span>Salin Teks</span>
-                </button>
-            </div>
-            <div id="result-text" class="text-gray-700 whitespace-pre-wrap selection:bg-indigo-100"></div>
+
         </div>
     </div>
 
     <script>
-        const generateBtn = document.getElementById('generate-btn');
-        const productDescription = document.getElementById('product-description');
-        const targetAudience = document.getElementById('target-audience');
-        const ctaGoals = document.getElementById('cta-goals');
-        const purposeSelect = document.getElementById('purpose');
-        const formulaSelect = document.getElementById('formula');
-        const hookSelect = document.getElementById('hook');
-        const outputContainer = document.getElementById('output-container');
-        const loader = document.getElementById('loader');
-        const resultHeader = document.getElementById('result-header');
-        const resultText = document.getElementById('result-text');
-        const copyBtn = document.getElementById('copy-btn');
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const apiUrl = '/api';
 
-        const callGenerateApi = async (prompt, retries = 3, delay = 1000) => {
-            const backendUrl = '/api/generate';
+            const purposeOptions = ["Video Reels/Tiktok", "Video Youtube", "Script Teks", "Status Facebook", "Status Threads/X", "Carousel Instagram", "Feed Single Post", "Caption", "Chat WA"];
+            const formulaOptions = ["AIDA (Attention, Interest, Desire, Action)", "PAS (Problem, Agitate, Solve)", "FAB (Features, Advantages, Benefits)", "PPPP (Picture, Promise, Prove, Push)", "BAB (Before, After, Bridge)", "The Star-Story-Solution Formula", "ACCA (Awareness, Comprehension, Conviction, Action)", "4C (Clear, Concise, Compelling, Credible)", "GRAB (Gain attention, Relate, Agitate, Bridge)", "PASTOR (Person, Aspiration, Story, Testimony, Offer, Request)", "QUEST (Qualify, Understand, Educate, Stimulate, Transition)", "SLAP (Stop, Look, Act, Purchase)", "AICPBSAWN (Attention, Interest, Credibility, Proof, Benefit, Scarcity, Action, Warn, Now)"];
+            const hookOptions = ["Negatif, Positif", "Problem, Solution", "Before, After", "Manfaat Langsung (Direct Benefit)", "Angka atau Daftar (Numbered List)", "Pertanyaan (Question)", "Perintah (Command)", "Rasa Penasaran & Kejutan (Curiosity & Intrigue)", "Berita atau Pengumuman (News/Announcement)", "Bukti Sosial & Testimonial (Social Proof)", "Urgensi & Kelangkaan (Urgency & Scarcity)", "Dulu.., Sekarang..."];
+            const languageOptions = ["Bahasa Gen-Z", "Bahasa Indonesia", "Bahasa Jawa (ragam Ngoko)", "Bahasa Jawa (ragam Krama)", "Bahasa Sunda (ragam Loma)", "Bahasa Sunda (ragam Lemes)", "Bahasa Banjar (ragam Kuala)", "Bahasa Banjar (ragam Hulu)", "Bahasa Bali", "Bahasa Batak", "Bahasa Minangkabau", "Bahasa Makassar", "Bahasa Bugis", "Bahasa Aceh", "Bahasa Madura", "Bahasa Melayu", "Bahasa Papua", "Lainnya"];
+            const hookDropdownOptions = ["Random", ...hookOptions];
 
-            for (let i = 0; i < retries; i++) {
+            const deskripsiInput = document.getElementById('form-deskripsi');
+            const targetInput = document.getElementById('form-target');
+            const ctaInput = document.getElementById('form-cta');
+            const peruntukanSelect = document.getElementById('form-peruntukan');
+            const formulaSelect = document.getElementById('form-formula');
+            const hookSelect = document.getElementById('form-hook');
+            const bahasaSelect = document.getElementById('form-bahasa');
+            const customBahasaContainer = document.getElementById('custom-bahasa-container');
+            const customBahasaInput = document.getElementById('form-bahasa-kustom');
+            
+            const generateButton = document.getElementById('generate-button');
+            const copyButton = document.getElementById('copy-button');
+            const outputContainer = document.getElementById('output-container');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            const outputContent = document.getElementById('output-content');
+            
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalMessage = document.getElementById('modal-message');
+            const modalCloseButton = document.getElementById('modal-close-button');
+
+            function showModal(title, message) {
+                modalTitle.textContent = title;
+                modalMessage.textContent = message;
+                modal.classList.remove('hidden');
+            }
+            function hideModal() {
+                modal.classList.add('hidden');
+            }
+            modalCloseButton.addEventListener('click', hideModal);
+            
+            function populateSelect(selectEl, options) {
+                options.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    selectEl.appendChild(option);
+                });
+            }
+            populateSelect(peruntukanSelect, purposeOptions);
+            populateSelect(formulaSelect, formulaOptions);
+            populateSelect(hookSelect, hookDropdownOptions);
+            populateSelect(bahasaSelect, languageOptions);
+            bahasaSelect.value = "Bahasa Indonesia"; 
+
+            async function callApi(payload, retryCount = 0) {
+                const maxRetries = 5;
+                const delay = Math.pow(2, retryCount) * 1000 + Math.random() * 1000;
                 try {
-                    const response = await fetch(backendUrl, {
+                    const response = await fetch(apiUrl, { 
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ prompt: prompt })
+                        body: JSON.stringify(payload) 
                     });
-
                     if (!response.ok) {
-                         const errorResult = await response.json();
-                        throw new Error(errorResult.error || `HTTP error! status: ${response.status}`);
+                        if (response.status === 429 && retryCount < maxRetries) {
+                            await new Promise(res => setTimeout(res, delay));
+                            return callApi(payload, retryCount + 1);
+                        }
+                        const errorBody = await response.json();
+                        throw new Error(`API error: ${response.status} ${errorBody.error || response.statusText}`);
                     }
-
-                    const result = await response.json();
-                    return result.text;
-
+                    return await response.json(); 
                 } catch (error) {
-                    console.error(`Attempt ${i + 1} failed:`, error);
-                    if (i === retries - 1) {
-                         return `Maaf, terjadi kesalahan: ${error.message}. Silakan coba lagi nanti.`;
+                    if (retryCount < maxRetries) {
+                        await new Promise(res => setTimeout(res, delay));
+                        return callApi(payload, retryCount + 1);
                     }
-                    await new Promise(res => setTimeout(res, delay * Math.pow(2, i)));
+                    console.error("Gagal memanggil API setelah beberapa kali percobaan:", error);
+                    throw error;
                 }
             }
-        };
 
-        generateBtn.addEventListener('click', async () => {
-            const description = productDescription.value.trim();
-            const audience = targetAudience.value.trim();
-            const cta = ctaGoals.value.trim();
+            bahasaSelect.addEventListener('change', () => {
+                if (bahasaSelect.value === 'Lainnya') {
+                    customBahasaContainer.classList.remove('hidden');
+                } else {
+                    customBahasaContainer.classList.add('hidden');
+                }
+            });
 
-            if (!description || !audience || !cta) {
-                alert("Mohon lengkapi semua kolom (deskripsi, target audiens, dan CTA).");
-                return;
-            }
+            generateButton.addEventListener('click', async () => {
+                const formData = {
+                    deskripsi: deskripsiInput.value,
+                    target: targetInput.value,
+                    cta: ctaInput.value,
+                    peruntukan: peruntukanSelect.value,
+                    formula: formulaSelect.value,
+                    hook: hookSelect.value,
+                    bahasa: bahasaSelect.value,
+                    bahasaKustom: customBahasaInput.value
+                };
 
-            const purpose = purposeSelect.value;
-            const formula = formulaSelect.value;
-            const hook = hookSelect.value;
-            
-            outputContainer.classList.remove('hidden');
-            loader.classList.remove('hidden');
-            resultHeader.classList.add('hidden');
-            resultText.textContent = '';
-            generateBtn.disabled = true;
-            generateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                if (!formData.deskripsi || !formData.target || !formData.cta) {
+                    showModal("Input Tidak Lengkap", "Mohon lengkapi semua kolom (deskripsi, target audiens, dan CTA).");
+                    return;
+                }
 
-            const systemPrompt = `Anda adalah seorang ahli copywriting profesional berbahasa Indonesia. Tugas Anda adalah membuat salinan (copy) yang sangat menarik berdasarkan detail yang diberikan. Pastikan gaya bahasa dan formatnya sesuai dengan platform yang dituju. Hasilkan HANYA teks copywritingnya saja, tanpa penjelasan atau judul tambahan.`;
-            const userPrompt = `
-                Deskripsi Produk/Topik: "${description}"
-                Target Penonton/Audiens: "${audience}"
-                CTA (Call to Action) / Goals: "${cta}"
-                Peruntukan / Platform: ${purpose}
-                Formula Copywriting yang Digunakan: ${formula}
-                Gaya Hook (Kail) yang Digunakan: ${hook}
-                Buatkan copywritingnya sekarang.
-            `;
-            const fullPrompt = `${systemPrompt}\n\n${userPrompt}`;
+                loadingSpinner.classList.remove('hidden');
+                outputContent.classList.add('hidden');
+                generateButton.disabled = true;
+                generateButton.querySelector('span').textContent = 'Sedang Membuat...';
+                
+                let selectedHook = formData.hook;
+                if (selectedHook === "Random") {
+                    const randomIndex = Math.floor(Math.random() * hookOptions.length);
+                    selectedHook = hookOptions[randomIndex];
+                }
+                let selectedBahasa = formData.bahasa;
+                if (formData.bahasa === "Lainnya" && formData.bahasaKustom) {
+                    selectedBahasa = formData.bahasaKustom;
+                } else if (formData.bahasa === "Lainnya" && !formData.bahasaKustom) {
+                    selectedBahasa = "Bahasa Indonesia";
+                }
 
-            const generatedText = await callGenerateApi(fullPrompt);
+                const systemPrompt = `Anda adalah seorang ahli copywriting profesional berbahasa Indonesia. Tugas Anda adalah membuat copywriting yang memikat, persuasif, dan relevan dengan detail yang diberikan.
+                PENTING: Berikan HANYA hasil copywriting yang sudah jadi, siap pakai, TANPA tambahan basa-basi, judul, atau disclaimer. Langsung ke kontennya.`;
+                const userPrompt = `
+                  Deskripsi Produk/Topik: "${formData.deskripsi}"
+                  Target Penonton/Audiens: "${formData.target}"
+                  CTA (Call to Action) / Goals: "${formData.cta}"
+                  Peruntukan / Platform: ${formData.peruntukan}
+                  Formula Copywriting yang Digunakan: ${formData.formula}
+                  Gaya Hook (Kail) yang Digunakan: ${selectedHook}
+                  Bahasa yang Digunakan: ${selectedBahasa}
+                  Buatkan copywritingnya sekarang.
+                `;
+                
+                const payload = { systemPrompt, userPrompt };
 
-            resultText.textContent = generatedText.trim();
-            loader.classList.add('hidden');
-            resultHeader.classList.remove('hidden');
-            
-            generateBtn.disabled = false;
-            generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-        });
+                try {
+                    const data = await callApi(payload);
+                    const text = data.text; 
+                    
+                    if (text) {
+                        outputContent.textContent = text.trim(); 
+                    } else {
+                        throw new Error("Respon API tidak valid.");
+                    }
+                } catch (error) {
+                    showModal("Error", `Gagal menghasilkan copywriting: ${error.message}`);
+                    outputContent.innerHTML = `<p class="text-gray-500">Hasil copywriting Anda akan muncul di sini...</p>`;
+                } finally {
+                    loadingSpinner.classList.add('hidden');
+                    outputContent.classList.remove('hidden');
+                    generateButton.disabled = false;
+                    generateButton.querySelector('span').textContent = 'Buat Copywriting';
+                }
+            });
 
-        copyBtn.addEventListener('click', () => {
-            const tempTextArea = document.createElement('textarea');
-            tempTextArea.value = resultText.textContent;
-            document.body.appendChild(tempTextArea);
-            tempTextArea.select();
-            try {
-                 document.execCommand('copy');
-                const originalBtnText = copyBtn.querySelector('span').textContent;
-                copyBtn.querySelector('span').textContent = 'Tersalin!';
+            copyButton.addEventListener('click', () => {
+                const textToCopy = outputContent.innerText;
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = textToCopy;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                try {
+                    document.execCommand('copy');
+                    copyButton.textContent = 'Tersalin!';
+                    copyButton.classList.remove('bg-[#0f1d42]', 'hover:bg-opacity-75');
+                    copyButton.classList.add('bg-green-600', 'hover:bg-green-700');
+                } catch (err) {
+                    copyButton.textContent = 'Gagal';
+                    copyButton.classList.remove('bg-[#0f1d42]', 'hover:bg-opacity-75');
+                    copyButton.classList.add('bg-red-600', 'hover:bg-red-700');
+                }
+                document.body.removeChild(tempTextArea);
+
                 setTimeout(() => {
-                    copyBtn.querySelector('span').textContent = "Salin Teks";
+                    copyButton.textContent = 'Salin';
+                    copyButton.classList.remove('bg-green-600', 'hover:bg-green-700', 'bg-red-600', 'hover:bg-red-700');
+                    copyButton.classList.add('bg-[#0f1d42]', 'hover:bg-opacity-75');
                 }, 2000);
-            } catch (err) {
-                console.error('Gagal menyalin teks: ', err);
-                alert('Gagal menyalin teks. Silakan salin secara manual.');
-            }
-            document.body.removeChild(tempTextArea);
+            });
         });
     </script>
 </body>
 </html>
-
